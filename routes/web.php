@@ -14,4 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\DashboardController::class, 'index'] );
+
 Route::get('/dashboard/apply', [App\Http\Controllers\DashboardController::class, 'applyform']);
