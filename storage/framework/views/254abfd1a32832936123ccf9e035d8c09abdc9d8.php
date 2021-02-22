@@ -429,10 +429,9 @@
     <hr>
 
     <div class="text-center pt-3 mb-5">
-        <button class="btn btn-info mx-3" type="button" data-bs-toggle="modal" data-bs-target="#view"><i class="fas fa-eye px-3"></i>View</button>
+        <button class="btn btn-info mx-3" type="button" data-toggle="modal" data-target="#view"><i class="fas fa-eye px-3"></i>View</button>
         <button class="btn btn-success mx-3"><i class="fas fa-save px-3"></i>Save</button>
         <button class="btn btn-danger mx-3" type="reset"><i class="fas fa-times px-3"></i>Clear</button>
-    </div>
     </div>
 </form>
 
@@ -444,7 +443,7 @@
                     <h5 class="modal-title text-center" id="exampleModalLabel">
                         Government of West Bengal Backward Classes Welfare Department Application form for SC/ST/OBC Certificate
                     </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <section class="container">
@@ -504,9 +503,9 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label> Caste/Tribe/Community: <span class="star">*</span></label>
-                                    <select id="disabledSelect" class="form-select form-select-sm mb-3">
-                                <option>Disabled select</option>
-                                </select>
+                                    <select id="selectcaste" class="form-select form-select-sm mb-3">
+                                        <option>Disabled select</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -884,7 +883,7 @@
 
 
                 <div class="text-center py-1" style="border-top: 1px solid;">
-                    <button type="button" class="btn-Continue">Continue</button>
+                    <button type="button" data-dismiss="modal" class="btn-Continue">Continue</button>
                 </div>
             </div>
         </div>
