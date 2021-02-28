@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 22, 2021 at 05:24 AM
+-- Generation Time: Feb 28, 2021 at 03:03 PM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -75,10 +75,34 @@ CREATE TABLE `caste_or_tribe_mst` (
   `id` int(11) NOT NULL,
   `m_caste_name` enum('SC','ST','OBC') NOT NULL,
   `s_caste_name` enum('OBC','OBC-A','OBC-B') DEFAULT NULL,
-  `c_name` varchar(20) NOT NULL,
+  `c_name` varchar(30) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `caste_or_tribe_mst`
+--
+
+INSERT INTO `caste_or_tribe_mst` (`id`, `m_caste_name`, `s_caste_name`, `c_name`, `created_at`, `updated_at`) VALUES
+(1, 'SC', NULL, 'BAGDI', '2021-02-28 15:22:13', '2021-02-28 15:22:13'),
+(2, 'SC', NULL, 'BAHELIA', '2021-02-28 15:23:02', '2021-02-28 15:23:02'),
+(3, 'SC', NULL, 'BALMIKI', '2021-02-28 15:32:32', '2021-02-28 15:32:32'),
+(4, 'SC', NULL, 'BANTAR', '2021-02-28 15:32:32', '2021-02-28 15:32:32'),
+(5, 'ST', NULL, 'ASUR', '2021-02-28 15:33:25', '2021-02-28 15:33:25'),
+(6, 'ST', NULL, 'BAIGA', '2021-02-28 15:33:25', '2021-02-28 15:33:25'),
+(7, 'ST', NULL, 'BEDIA ', '2021-02-28 15:34:04', '2021-02-28 15:34:04'),
+(8, 'ST', NULL, 'BEDIYA', '2021-02-28 15:34:04', '2021-02-28 15:34:04'),
+(9, 'ST', NULL, 'BHUMIJ', '2021-02-28 15:34:51', '2021-02-28 15:34:51'),
+(10, 'ST', NULL, 'BHUTIA', '2021-02-28 15:34:51', '2021-02-28 15:34:51'),
+(11, 'ST', NULL, 'BIRHOR', '2021-02-28 15:36:27', '2021-02-28 15:36:27'),
+(12, 'ST', NULL, 'BIRJIA', '2021-02-28 15:36:27', '2021-02-28 15:36:27'),
+(13, 'ST', NULL, 'CHAKMA', '2021-02-28 15:36:27', '2021-02-28 15:36:27'),
+(14, 'OBC', 'OBC', 'RANGWA', '2021-02-28 15:38:38', '2021-02-28 15:38:38'),
+(15, 'OBC', 'OBC-A', 'ABDAL (MUSLIM)', '2021-02-04 15:38:58', '2021-02-10 15:39:03'),
+(16, 'OBC', 'OBC-A', 'ATTA (MUSLIM)', '2021-02-28 15:38:38', '2021-02-28 15:38:38'),
+(17, 'OBC', 'OBC-B', 'ADALDAR(MUSLIM)', '2021-02-28 15:40:02', '2021-02-28 15:40:02'),
+(18, 'OBC', 'OBC-B', 'AKUNJI/AKAN/AKHAN(MUSLIM)', '2021-02-28 15:40:02', '2021-02-28 15:40:02');
 
 -- --------------------------------------------------------
 
@@ -144,6 +168,30 @@ CREATE TABLE `municipality_mst` (
 INSERT INTO `municipality_mst` (`id`, `sub_div_id`, `name`, `created_at`, `updated_at`) VALUES
 (1, 24, 'ULUBERIA', '2021-02-22 09:31:39', '2021-02-22 09:31:39'),
 (2, 23, 'HOWRAH MC', '2021-02-22 09:36:07', '2021-02-22 09:36:07');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `p_station_mst`
+--
+
+CREATE TABLE `p_station_mst` (
+  `id` int(11) NOT NULL,
+  `sub_div_id` int(11) NOT NULL,
+  `name` varchar(25) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `p_station_mst`
+--
+
+INSERT INTO `p_station_mst` (`id`, `sub_div_id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 29, 'ALIPUR', '2021-02-28 14:09:26', '2021-02-28 14:09:26'),
+(2, 29, 'AMHERS STREET', '2021-02-28 14:09:26', '2021-02-28 14:09:26'),
+(3, 29, 'ANANDAPUR', '2021-02-28 14:10:22', '2021-02-28 14:10:22'),
+(4, 29, 'BALLYGUNGE', '2021-02-28 14:10:22', '2021-02-28 14:10:22');
 
 -- --------------------------------------------------------
 
@@ -281,6 +329,12 @@ ALTER TABLE `municipality_mst`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `p_station_mst`
+--
+ALTER TABLE `p_station_mst`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `sub_div_mst`
 --
 ALTER TABLE `sub_div_mst`
@@ -312,7 +366,7 @@ ALTER TABLE `block_mst`
 -- AUTO_INCREMENT for table `caste_or_tribe_mst`
 --
 ALTER TABLE `caste_or_tribe_mst`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `dist_mst`
@@ -325,6 +379,12 @@ ALTER TABLE `dist_mst`
 --
 ALTER TABLE `municipality_mst`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `p_station_mst`
+--
+ALTER TABLE `p_station_mst`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `sub_div_mst`
