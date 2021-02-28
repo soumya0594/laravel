@@ -17,7 +17,7 @@ $(document).ready(function(){
     $("input[name='casterad']:checked").val()==='OBC' ? $('#appendobcsub').append(html).show() : $('#appendobcsub').empty().hide();
     var stationHtml = ''; municipalityHtml = '';
     stationHtml = '<label><input type="radio" class="optradio" name="optradio" value="policeStation" checked> Police Station : <span class="star">*</span></label>';
-    municipalityHtml ='<label><input class="optradio" type="radio" name="optradio" value="municipality" checked> Municipality</label> /<label><input class="optradio" type="radio" value="block" name="optradio"> Block : <span class="star">*</span></label>';
+    municipalityHtml ='<label><input class="optradio mr-2" type="radio" name="optradio" value="municipality" checked> Municipality</label> <label><input class="optradio" type="radio" value="block" name="optradio"> Block : <span class="star">*</span></label>';
     $('#district').change(function(){
         $(this).val() == '12' ? $('#municipality').empty().append(stationHtml).show() : $('#municipality').empty().append(municipalityHtml);
     });
