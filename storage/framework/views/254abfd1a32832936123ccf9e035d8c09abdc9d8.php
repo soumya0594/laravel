@@ -50,7 +50,7 @@
         </div>
         <div class="col-md-3 my-auto">
             <div class="form-group">
-                <div class="radio">
+                <div class="radio" id="caste">
                     <label><input type="radio" name="casterad" value="SC" checked> SC </label>
                     <label><input type="radio" name="casterad" value="ST"> ST </label>
                     <label><input type="radio" name="casterad" value="OBC"> OBC </label>
@@ -63,8 +63,8 @@
                 <label> Caste/Tribe/Community: <span class="star">*</span></label>
                 <select id="subCaste" name="subCaste" class="form-control">
                     <option value="">- SELECT FROM THE LIST-</option>
-                   <?php $__currentLoopData = $data['caste']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $casteValue): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <option value="<?php echo e($casteValue->id); ?>"><?php echo e($casteValue->c_name); ?></option>
+                    <?php $__currentLoopData = $data['caste']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $casteValue): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($casteValue->id); ?>"><?php echo e($casteValue->c_name); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </select>
             </div>

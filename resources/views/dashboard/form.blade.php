@@ -51,7 +51,7 @@
         </div>
         <div class="col-md-3 my-auto">
             <div class="form-group">
-                <div class="radio">
+                <div class="radio" id="caste">
                     <label><input type="radio" name="casterad" value="SC" checked> SC </label>
                     <label><input type="radio" name="casterad" value="ST"> ST </label>
                     <label><input type="radio" name="casterad" value="OBC"> OBC </label>

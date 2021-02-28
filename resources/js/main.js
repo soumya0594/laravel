@@ -10,7 +10,7 @@ $(document).ready(function(){
         format: 'yyyy-mm-dd'
     });
     var html='';
-    html = '<div class="form-group"><label for="email">OBC Category:<span class="star">*</span></label><select id="disabledSelect" class="form-control"><option>Disabled select</option></select></div>'
+    html = '<div class="form-group"><label for="subObc">OBC Category:<span class="star">*</span></label><select id="subObc" name="subObc" class="form-control"><option>Select</option><option value="OBC">OBC</option><option value="OBC-A">OBC-A</option><option value="OBC-B">OBC-B</option></select></div>'
     $("input[name='casterad']").change(function () {
         $(this).val() === 'OBC' ? $('#appendobcsub').append(html).show() : $('#appendobcsub').empty().hide();
     });
@@ -44,7 +44,7 @@ $(document).ready(function(){
             }
         })
     });
-    $('#subDivision').change(function() {
+    $('body').on('change', '#subDivision', function () {
         var id = $(this).val();
         var selectOption = $("input[name='optradio']:checked").val();
         $('#disabledSelect').empty();
@@ -55,7 +55,7 @@ $(document).ready(function(){
             data: { id: id, selectOption: selectOption },
             dataType: "json",
             success: function (data) {
-                console.log(data);
+                //console.log(data);
                 var disabledSelect = '';
                 $('#disabledSelect').empty();
                 $('#disabledSelect').append('<option value="" disabled selected>- SELECT FROM THE LIST-</option>');
@@ -90,6 +90,49 @@ $(document).ready(function(){
                 })
         }
 
+    });
+    $('body').on('change','#caste',function(){
+        //var formdata= new FormData();
+        var caste = $("input[name='casterad']:checked").val();
+        var subObc = $(document).find('#subObc') ? $('#subObc').val() : '';
+        $.ajax({
+            type: 'POST',
+            url: base_url + "get_caste",
+            data: { caste: caste, subObc:subObc },
+            dataType: "json",
+            success: function (data) {
+                //console.log(data);
+                var subCaste = '';
+                $('#subCaste').empty();
+                $('#subCaste').append('<option value="" disabled selected>- SELECT FROM THE LIST-</option>');
+                $.each(data, function (k, v) {
+                    subCaste += '<option value= ' + v.id + '>' + v.c_name + '</option>';
+                });
+                $('#subCaste').append(subCaste);
+            }
+        })
+    });
+    $('body').on('change', '#subObc', function () {
+        var subObc = $(this).val();
+        var caste = $("input[name='casterad']:checked").val();
+        $('#subCaste').empty();
+        $('#subCaste').append('<option value="" disabled selected>Processing....</option>');
+        $.ajax({
+            type: 'POST',
+            url: base_url + "get_caste",
+            data: { caste: caste, subObc: subObc },
+            dataType: "json",
+            success: function (data) {
+                //console.log(data);
+                var subCaste = '';
+                $('#subCaste').empty();
+                $('#subCaste').append('<option value="" disabled selected>- SELECT FROM THE LIST-</option>');
+                $.each(data, function (k, v) {
+                    subCaste += '<option value= ' + v.id + '>' + v.c_name + '</option>';
+                });
+                $('#subCaste').append(subCaste);
+            }
+        })
     });
 })
 

@@ -18,3 +18,4 @@ Route::get('/', [DashboardController::class, 'index'] );
 Route::get('/dashboard/apply', [DashboardController::class, 'applyform']);
 Route::any('/getSubDivision', [DashboardController::class, 'getsubdivision']);
 Route::any('/pre_SubDivision', [DashboardController::class, 'pre_SubDivision']);
+Route::any('/get_caste', [DashboardController::class, 'get_caste']);

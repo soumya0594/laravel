@@ -33,4 +33,10 @@ class DashboardController extends BaseController
         $data = District::pre_SubDivision($input);
         return $data;
     }
+    public function get_caste(Request $request)
+    {
+        $input = $request->all();
+        $data = isset($input['subObc']) ? District::getcaste($input['caste'], $input['subObc']) : District::getcaste($input['caste']);
+        return $data;
+    }
 }

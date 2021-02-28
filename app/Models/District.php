@@ -47,4 +47,5 @@ class District extends Model
             return false;
         }
     }
+
 }
