@@ -1,4 +1,11 @@
 $(document).ready(function(){
+    var base_url = window.location.origin + '/laravel/';
+    console.log(base_url);
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     $('.date').datepicker({
         format: 'yyyy-mm-dd'
     });
@@ -8,5 +15,81 @@ $(document).ready(function(){
         $(this).val() === 'OBC' ? $('#appendobcsub').append(html).show() : $('#appendobcsub').empty().hide();
     });
     $("input[name='casterad']:checked").val()==='OBC' ? $('#appendobcsub').append(html).show() : $('#appendobcsub').empty().hide();
+    var stationHtml = ''; municipalityHtml = '';
+    stationHtml = '<label><input type="radio" class="optradio" name="optradio" value="policeStation" checked> Police Station : <span class="star">*</span></label>';
+    municipalityHtml ='<label><input class="optradio" type="radio" name="optradio" value="municipality" checked> Municipality</label> /<label><input class="optradio" type="radio" value="block" name="optradio"> Block : <span class="star">*</span></label>';
+    $('#district').change(function(){
+        $(this).val() == '12' ? $('#municipality').empty().append(stationHtml).show() : $('#municipality').empty().append(municipalityHtml);
+    });
+    $('#municipality').empty().append(municipalityHtml);
+    $('body').on('change', '#district', function () {
+        var id = $(this).val();
+        $('#subDivision').empty();
+        $('#subDivision').append('<option value="" disabled selected>Processing....</option>');
+        $('#disabledSelect').empty();
+        $.ajax({
+            type: 'POST',
+            url: base_url+"getSubDivision",
+            data: { id: id },
+            dataType: "json",
+            success: function (data) {
+                //console.log(data);
+                var subDivision ='';
+                $('#subDivision').empty();
+                $('#subDivision').append('<option value="" disabled selected>- SELECT FROM THE LIST-</option>');
+                $.each(data, function (k, v) {
+                    subDivision += '<option value= ' + v.id + '>' + v.name + '</option>';
+                });
+                $('#subDivision').append(subDivision);
+            }
+        })
+    });
+    $('#subDivision').change(function() {
+        var id = $(this).val();
+        var selectOption = $("input[name='optradio']:checked").val();
+        $('#disabledSelect').empty();
+        $('#disabledSelect').append('<option value="" disabled selected>Processing....</option>');
+        $.ajax({
+            type: 'POST',
+            url: base_url + "pre_SubDivision",
+            data: { id: id, selectOption: selectOption },
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+                var disabledSelect = '';
+                $('#disabledSelect').empty();
+                $('#disabledSelect').append('<option value="" disabled selected>- SELECT FROM THE LIST-</option>');
+                $.each(data, function (k, v) {
+                    disabledSelect += '<option value= ' + v.id + '>' + v.name + '</option>';
+                });
+                $('#disabledSelect').append(disabledSelect);
+            }
+        })
+    });
+    $('body').on('click', '.optradio', function () {
+        var selectOption = $(this).val();
+        var subDivisionId = $('#subDivision').val();
+        if (subDivisionId != null && subDivisionId != '') {
+            $('#disabledSelect').empty();
+            $('#disabledSelect').append('<option value="" disabled selected>Processing....</option>');
+                $.ajax({
+                    type: 'POST',
+                    url: base_url + "pre_SubDivision",
+                    data: { id: subDivisionId, selectOption: selectOption },
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data);
+                        var disabledSelect = '';
+                        $('#disabledSelect').empty();
+                        $('#disabledSelect').append('<option value="" disabled selected>- SELECT FROM THE LIST-</option>');
+                        $.each(data, function (k, v) {
+                            disabledSelect += '<option value= ' + v.id + '>' + v.name + '</option>';
+                        });
+                        $('#disabledSelect').append(disabledSelect);
+                    }
+                })
+        }
+
+    });
 })
 

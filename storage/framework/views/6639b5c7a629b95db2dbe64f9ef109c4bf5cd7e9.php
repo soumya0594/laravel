@@ -1,3 +1,5 @@
+
+
 <?php
   $error_number = 404;
 ?>

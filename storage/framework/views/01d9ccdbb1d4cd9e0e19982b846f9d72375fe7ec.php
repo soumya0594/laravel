@@ -1,3 +1,6 @@
+
+
+
 <?php
   $title = 'Error '.$error_number;
 ?>

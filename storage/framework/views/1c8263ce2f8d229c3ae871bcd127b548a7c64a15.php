@@ -4,11 +4,9 @@
         <title>form</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>" />
         <link rel="preconnect" href="https://fonts.gstatic.com">
-
-        
         <link rel="stylesheet" type="text/css" href="<?php echo e(asset('/resources/css/form.css')); ?>">
-
         <link rel="stylesheet" type="text/css" href="<?php echo e(asset('/resources/css/bootstrap-datepicker.min.css')); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo e(asset('/resources/fontawesome/css/all.min.css')); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo e(asset('/resources/fontawesome/css/fontawesome.min.css')); ?>">

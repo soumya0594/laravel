@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,5 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\DashboardController::class, 'index'] );
-Route::get('/dashboard/apply', [App\Http\Controllers\DashboardController::class, 'applyform']);
+Route::get('/', [DashboardController::class, 'index'] );
+Route::get('/dashboard/apply', [DashboardController::class, 'applyform']);
+Route::any('/getSubDivision', [DashboardController::class, 'getsubdivision']);
+Route::any('/pre_SubDivision', [DashboardController::class, 'pre_SubDivision']);

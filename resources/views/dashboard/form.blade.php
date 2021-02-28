@@ -10,34 +10,34 @@
         <p class="mb-1 point-name">1. Application to:</p>
         <div class="col-md-3">
             <div class="form-group">
-                <label for="email">State: <span class="star">*</span></label>
-                <input type="email" class="form-control-plaintext font-weight-bolder" id="email" value="WEST BENGAL" readonly="" name="state">
+                <label for="state">State: <span class="star">*</span></label>
+                <input class="form-control-plaintext font-weight-bolder" id="state" value="WEST BENGAL" readonly="" name="state">
             </div>
         </div>
         <div class="col-md-3">
             <div class="form-group">
-                <label for="email">District: <span class="star">*</span></label>
-                <select id="disabledSelect" class="form-control">
-                    <option>Disabled select</option>
+                <label for="district">District: <span class="star">*</span></label>
+                <select id="district" class="form-control">
+                    <option value="" disabled selected>- SELECT FROM THE LIST -</option>
+                    @foreach($data['district'] as $dataValue)
+                        <option value="{{ $dataValue->id }}">{{ $dataValue->name }}</option>
+                    @endforeach
                 </select>
             </div>
         </div>
         <div class="col-md-3">
             <div class="form-group">
-                <label for="email">Sub-division: <span class="star">*</span></label>
-                <select id="disabledSelect" class="form-control">
-                    <option>Disabled select</option>
+                <label for="subDivision">Sub-division: <span class="star">*</span></label>
+                <select id="subDivision" class="form-control">
+
                 </select>
             </div>
         </div>
         <div class="col-md-3">
             <div class="form-group">
-                <div class="radio">
-                    <label><input type="radio" name="optradio" checked> Municipality</label> /
-                    <label><input type="radio" name="optradio"> Block : <span class="star">*</span></label>
+                <div class="radio" id="municipality">
                 </div>
                 <select id="disabledSelect" class="form-control">
-                    <option>Disabled select</option>
                 </select>
             </div>
         </div>
@@ -62,8 +62,11 @@
         <div class="col-md-3">
             <div class="form-group">
                 <label> Caste/Tribe/Community: <span class="star">*</span></label>
-                <select id="disabledSelect" class="form-control">
-                    <option>Disabled select</option>
+                <select id="subCaste" name="subCaste" class="form-control">
+                    <option value="">- SELECT FROM THE LIST-</option>
+                    @foreach($data['caste'] as $casteValue)
+                            <option value="{{ $casteValue->id }}">{{ $casteValue->c_name }}</option>
+                    @endforeach
                 </select>
             </div>
         </div>
