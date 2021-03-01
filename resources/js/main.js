@@ -6,7 +6,7 @@ $(document).ready(function(){
         }
     });
     $('.date').datepicker({
-        format: "mm/dd/yyyy"
+        format: 'yyyy-mm-dd'
     });
     var html='';
     html = '<div class="form-group"><label for="subObc">OBC Category:<span class="star">*</span></label><select id="subObc" name="subObc" class="form-control"><option>Select</option><option value="OBC">OBC</option><option value="OBC-A">OBC-A</option><option value="OBC-B">OBC-B</option></select></div>'
