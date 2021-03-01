@@ -18,9 +18,10 @@ class DashboardController extends BaseController
     }
     public function applyform(){
         $data = array();
-        $data['district'] = District::all();
+        $data['state'] = District::getstate();
+        $data['district'] = District::getdistrict(8);
         $data['caste'] = District::getcaste('SC');
-        return view('dashboard.form',['data'=>$data]);
+        return view('dashboard.form',$data);
     }
     public function getsubdivision(Request $request){
         $input = $request->all();

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 28, 2021 at 03:03 PM
--- Server version: 10.4.16-MariaDB
--- PHP Version: 7.4.12
+-- Generation Time: Mar 01, 2021 at 12:46 PM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.4.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -112,6 +112,7 @@ INSERT INTO `caste_or_tribe_mst` (`id`, `m_caste_name`, `s_caste_name`, `c_name`
 
 CREATE TABLE `dist_mst` (
   `id` int(11) NOT NULL,
+  `state_id` int(11) NOT NULL,
   `name` text NOT NULL,
   `state` varchar(20) NOT NULL DEFAULT 'WEST BENGAL',
   `created_at` datetime NOT NULL,
@@ -122,30 +123,30 @@ CREATE TABLE `dist_mst` (
 -- Dumping data for table `dist_mst`
 --
 
-INSERT INTO `dist_mst` (`id`, `name`, `state`, `created_at`, `updated_at`) VALUES
-(1, 'ALIPURDUAR', 'WEST BENGAL', '2021-02-22 08:57:18', '2021-02-22 08:57:18'),
-(2, 'BANKURA', 'WEST BENGAL', '2021-02-22 08:57:18', '2021-02-22 08:57:18'),
-(3, 'BIRBHUM', 'WEST BENGAL', '2021-02-22 08:58:06', '2021-02-22 08:58:06'),
-(4, 'COOCH BEHAR', 'WEST BENGAL', '2021-02-22 08:58:06', '2021-02-22 08:58:06'),
-(5, 'DAKSHIN DINAJPUR', 'WEST BENGAL', '2021-02-22 08:59:12', '2021-02-22 08:59:12'),
-(6, 'DARJEELING', 'WEST BENGAL', '2021-02-22 08:59:12', '2021-02-22 08:59:12'),
-(7, 'HOOGHLY', 'WEST BENGAL', '2021-02-22 08:59:48', '2021-02-22 08:59:48'),
-(8, 'HOWRAH', 'WEST BENGAL', '2021-02-22 08:59:48', '2021-02-22 08:59:48'),
-(9, 'JALPAIGURI', 'WEST BENGAL', '2021-02-22 09:00:26', '2021-02-22 09:00:26'),
-(10, 'JHARGRAM', 'WEST BENGAL', '2021-02-22 09:00:26', '2021-02-22 09:00:26'),
-(11, 'KALIMPONG', 'WEST BENGAL', '2021-02-22 09:00:59', '2021-02-22 09:00:59'),
-(12, 'KOLKATA', 'WEST BENGAL', '2021-02-22 09:00:59', '2021-02-22 09:00:59'),
-(13, 'MALDAH', 'WEST BENGAL', '2021-02-22 09:01:32', '2021-02-22 09:01:32'),
-(14, 'MURSHIDABAD', 'WEST BENGAL', '2021-02-22 09:01:32', '2021-02-22 09:01:32'),
-(15, 'NADIA', 'WEST BENGAL', '2021-02-22 09:02:08', '2021-02-22 09:02:08'),
-(16, 'NORTH 24 PARGANAS', 'WEST BENGAL', '2021-02-22 09:02:08', '2021-02-22 09:02:08'),
-(17, 'PASCHIM BARDHAMAN', 'WEST BENGAL', '2021-02-22 09:02:39', '2021-02-22 09:02:39'),
-(18, 'PASCHIM MEDINIPUR', 'WEST BENGAL', '2021-02-22 09:02:39', '2021-02-22 09:02:39'),
-(19, 'PURBA BARDHAMAN', 'WEST BENGAL', '2021-02-22 09:03:12', '2021-02-22 09:03:12'),
-(20, 'PURBA MEDINIPUR', 'WEST BENGAL', '2021-02-22 09:03:12', '2021-02-22 09:03:12'),
-(21, 'PURULIA', 'WEST BENGAL', '2021-02-22 09:03:44', '2021-02-22 09:03:44'),
-(22, 'SOUTH 24 PARGANAS', 'WEST BENGAL', '2021-02-22 09:03:44', '2021-02-22 09:03:44'),
-(23, 'UTTAR DINAJPUR', 'WEST BENGAL', '2021-02-22 09:04:00', '2021-02-22 09:04:00');
+INSERT INTO `dist_mst` (`id`, `state_id`, `name`, `state`, `created_at`, `updated_at`) VALUES
+(1, 8, 'ALIPURDUAR', 'WEST BENGAL', '2021-02-22 08:57:18', '2021-02-22 08:57:18'),
+(2, 8, 'BANKURA', 'WEST BENGAL', '2021-02-22 08:57:18', '2021-02-22 08:57:18'),
+(3, 8, 'BIRBHUM', 'WEST BENGAL', '2021-02-22 08:58:06', '2021-02-22 08:58:06'),
+(4, 8, 'COOCH BEHAR', 'WEST BENGAL', '2021-02-22 08:58:06', '2021-02-22 08:58:06'),
+(5, 8, 'DAKSHIN DINAJPUR', 'WEST BENGAL', '2021-02-22 08:59:12', '2021-02-22 08:59:12'),
+(6, 8, 'DARJEELING', 'WEST BENGAL', '2021-02-22 08:59:12', '2021-02-22 08:59:12'),
+(7, 8, 'HOOGHLY', 'WEST BENGAL', '2021-02-22 08:59:48', '2021-02-22 08:59:48'),
+(8, 8, 'HOWRAH', 'WEST BENGAL', '2021-02-22 08:59:48', '2021-02-22 08:59:48'),
+(9, 8, 'JALPAIGURI', 'WEST BENGAL', '2021-02-22 09:00:26', '2021-02-22 09:00:26'),
+(10, 8, 'JHARGRAM', 'WEST BENGAL', '2021-02-22 09:00:26', '2021-02-22 09:00:26'),
+(11, 8, 'KALIMPONG', 'WEST BENGAL', '2021-02-22 09:00:59', '2021-02-22 09:00:59'),
+(12, 8, 'KOLKATA', 'WEST BENGAL', '2021-02-22 09:00:59', '2021-02-22 09:00:59'),
+(13, 8, 'MALDAH', 'WEST BENGAL', '2021-02-22 09:01:32', '2021-02-22 09:01:32'),
+(14, 8, 'MURSHIDABAD', 'WEST BENGAL', '2021-02-22 09:01:32', '2021-02-22 09:01:32'),
+(15, 8, 'NADIA', 'WEST BENGAL', '2021-02-22 09:02:08', '2021-02-22 09:02:08'),
+(16, 8, 'NORTH 24 PARGANAS', 'WEST BENGAL', '2021-02-22 09:02:08', '2021-02-22 09:02:08'),
+(17, 8, 'PASCHIM BARDHAMAN', 'WEST BENGAL', '2021-02-22 09:02:39', '2021-02-22 09:02:39'),
+(18, 8, 'PASCHIM MEDINIPUR', 'WEST BENGAL', '2021-02-22 09:02:39', '2021-02-22 09:02:39'),
+(19, 8, 'PURBA BARDHAMAN', 'WEST BENGAL', '2021-02-22 09:03:12', '2021-02-22 09:03:12'),
+(20, 8, 'PURBA MEDINIPUR', 'WEST BENGAL', '2021-02-22 09:03:12', '2021-02-22 09:03:12'),
+(21, 8, 'PURULIA', 'WEST BENGAL', '2021-02-22 09:03:44', '2021-02-22 09:03:44'),
+(22, 8, 'SOUTH 24 PARGANAS', 'WEST BENGAL', '2021-02-22 09:03:44', '2021-02-22 09:03:44'),
+(23, 8, 'UTTAR DINAJPUR', 'WEST BENGAL', '2021-02-22 09:04:00', '2021-02-22 09:04:00');
 
 -- --------------------------------------------------------
 
@@ -177,7 +178,7 @@ INSERT INTO `municipality_mst` (`id`, `sub_div_id`, `name`, `created_at`, `updat
 
 CREATE TABLE `p_station_mst` (
   `id` int(11) NOT NULL,
-  `sub_div_id` int(11) NOT NULL,
+  `dist_id` int(11) NOT NULL,
   `name` varchar(25) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
@@ -187,11 +188,42 @@ CREATE TABLE `p_station_mst` (
 -- Dumping data for table `p_station_mst`
 --
 
-INSERT INTO `p_station_mst` (`id`, `sub_div_id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 29, 'ALIPUR', '2021-02-28 14:09:26', '2021-02-28 14:09:26'),
-(2, 29, 'AMHERS STREET', '2021-02-28 14:09:26', '2021-02-28 14:09:26'),
-(3, 29, 'ANANDAPUR', '2021-02-28 14:10:22', '2021-02-28 14:10:22'),
-(4, 29, 'BALLYGUNGE', '2021-02-28 14:10:22', '2021-02-28 14:10:22');
+INSERT INTO `p_station_mst` (`id`, `dist_id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 12, 'ALIPUR', '2021-02-28 14:09:26', '2021-02-28 14:09:26'),
+(2, 12, 'AMHERS STREET', '2021-02-28 14:09:26', '2021-02-28 14:09:26'),
+(3, 12, 'ANANDAPUR', '2021-02-28 14:10:22', '2021-02-28 14:10:22'),
+(4, 12, 'BALLYGUNGE', '2021-02-28 14:10:22', '2021-02-28 14:10:22'),
+(5, 1, 'ALIPURDUAR', '2021-03-01 17:01:40', '2021-03-01 17:01:40'),
+(6, 1, 'BIRPARA', '2021-03-01 17:01:40', '2021-03-01 17:01:40'),
+(7, 1, 'FALAKATA', '2021-03-01 17:02:26', '2021-03-01 17:02:26'),
+(8, 1, 'JAYGAON', '2021-03-01 17:02:26', '2021-03-01 17:02:26');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `state_mst`
+--
+
+CREATE TABLE `state_mst` (
+  `id` int(11) NOT NULL,
+  `name` varchar(60) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `state_mst`
+--
+
+INSERT INTO `state_mst` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'ANDAMAN AND NICOBAR  ISLAND', '2021-03-01 15:52:48', '2021-03-01 15:52:48'),
+(2, 'ANDHRA PRADESH', '2021-03-01 15:52:48', '2021-03-01 15:52:48'),
+(3, 'ARUNACHAL PRADESH', '2021-03-01 15:53:20', '2021-03-01 15:53:20'),
+(4, 'ASSAM', '2021-03-01 15:53:20', '2021-03-01 15:53:20'),
+(5, 'BIHAR', '2021-03-01 15:53:55', '2021-03-01 15:53:55'),
+(6, 'CHANDIGARH', '2021-03-01 15:53:55', '2021-03-01 15:53:55'),
+(7, 'CHHATISGARH', '2021-03-01 15:54:37', '2021-03-01 15:54:37'),
+(8, 'WEST BENGAL', '2021-03-01 15:54:37', '2021-03-01 15:54:37');
 
 -- --------------------------------------------------------
 
@@ -335,6 +367,12 @@ ALTER TABLE `p_station_mst`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `state_mst`
+--
+ALTER TABLE `state_mst`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `sub_div_mst`
 --
 ALTER TABLE `sub_div_mst`
@@ -384,7 +422,13 @@ ALTER TABLE `municipality_mst`
 -- AUTO_INCREMENT for table `p_station_mst`
 --
 ALTER TABLE `p_station_mst`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `state_mst`
+--
+ALTER TABLE `state_mst`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `sub_div_mst`

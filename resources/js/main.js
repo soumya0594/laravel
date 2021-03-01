@@ -1,13 +1,12 @@
 $(document).ready(function(){
     var base_url = window.location.origin + '/laravel/';
-    console.log(base_url);
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
     $('.date').datepicker({
-        format: 'yyyy-mm-dd'
+        format: "mm/dd/yyyy"
     });
     var html='';
     html = '<div class="form-group"><label for="subObc">OBC Category:<span class="star">*</span></label><select id="subObc" name="subObc" class="form-control"><option>Select</option><option value="OBC">OBC</option><option value="OBC-A">OBC-A</option><option value="OBC-B">OBC-B</option></select></div>'
@@ -45,7 +44,7 @@ $(document).ready(function(){
         })
     });
     $('body').on('change', '#subDivision', function () {
-        var id = $(this).val();
+        var id = $('#district').val();
         var selectOption = $("input[name='optradio']:checked").val();
         $('#disabledSelect').empty();
         $('#disabledSelect').append('<option value="" disabled selected>Processing....</option>');
@@ -131,6 +130,29 @@ $(document).ready(function(){
                     subCaste += '<option value= ' + v.id + '>' + v.c_name + '</option>';
                 });
                 $('#subCaste').append(subCaste);
+            }
+        })
+    });
+    $('body').on('change', '#birthDistrict', function () {
+        var id = $(this).val();
+        var selectOption = 'policeStation';
+        $('#birthPoliceStation').empty();
+        $('#birthPoliceStation').append('<option value="" disabled selected>Processing....</option>');
+        //$('#disabledSelect').empty();
+        $.ajax({
+            type: 'POST',
+            url: base_url + "pre_SubDivision",
+            data: { selectOption: selectOption, id: id },
+            dataType: "json",
+            success: function (data) {
+                //console.log(data);
+                var birthPoliceStation = '';
+                $('#birthPoliceStation').empty();
+                $('#birthPoliceStation').append('<option value="" disabled selected>- SELECT FROM THE LIST-</option>');
+                $.each(data, function (k, v) {
+                    birthPoliceStation += '<option value= ' + v.id + '>' + v.name + '</option>';
+                });
+                $('#birthPoliceStation').append(birthPoliceStation);
             }
         })
     });

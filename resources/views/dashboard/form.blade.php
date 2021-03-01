@@ -19,7 +19,7 @@
                 <label for="district">District: <span class="star">*</span></label>
                 <select id="district" class="form-control">
                     <option value="" disabled selected>- SELECT FROM THE LIST -</option>
-                    @foreach($data['district'] as $dataValue)
+                    @foreach($district as $dataValue)
                         <option value="{{ $dataValue->id }}">{{ $dataValue->name }}</option>
                     @endforeach
                 </select>
@@ -64,7 +64,7 @@
                 <label> Caste/Tribe/Community: <span class="star">*</span></label>
                 <select id="subCaste" name="subCaste" class="form-control">
                     <option value="">- SELECT FROM THE LIST-</option>
-                    @foreach($data['caste'] as $casteValue)
+                    @foreach($caste as $casteValue)
                             <option value="{{ $casteValue->id }}">{{ $casteValue->c_name }}</option>
                     @endforeach
                 </select>
@@ -131,31 +131,37 @@
         <div class="col-md-3">
             <div class="form-group">
                 <label>(b) Place of Birth: <span class="star">* </span>  </label><label>State</label>
-                <select id="disabledSelect" class="form-control">
-                    <option>Disabled select</option>
+                <select id="birthState" name="birthState" class="form-control">
+                    <option value="">-- SELECT STATE FROM THE LIST--</option>
+                    @foreach($state as $stateValue)
+                        <option <?php echo ($stateValue->id==8)?'selected':'';?> value="{{ $stateValue->id }}">{{ $stateValue->name }}</option>
+                    @endforeach
                 </select>
             </div>
         </div>
         <div class="col-md-2">
             <div class="form-group">
                 <label>District: </label>
-                <select id="disabledSelect" class="form-control">
-                    <option>Disabled select</option>
+                <select id="birthDistrict" name="birthDistrict" class="form-control">
+                    <option value="">- SELECT DISTRICT FROM THE LIST-</option>
+                     @foreach($district as $dataValue)
+                        <option value="{{ $dataValue->id }}">{{ $dataValue->name }}</option>
+                    @endforeach
                 </select>
             </div>
         </div>
         <div class="col-md-2">
             <div class="form-group">
                 <label>Police Station: </label>
-                <select id="disabledSelect" class="form-control">
-                    <option>Disabled select</option>
+                <select id="birthPoliceStation" name="birthPoliceStation" class="form-control">
+                    <option value="">- SELECT POLICE STATION FROM THE LIST-</option>
                 </select>
             </div>
         </div>
         <div class="col-md-2">
             <div class="form-group">
                 <label>Village/City </label>
-                <select id="disabledSelect" class="form-control">
+                <select id="birthVillage" name="birthVillage" class="form-control">
                     <option>Disabled select</option>
                 </select>
             </div>

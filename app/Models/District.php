@@ -12,6 +12,11 @@ class District extends Model
     protected $table = 'dist_mst';
     protected $primaryKey = 'id';
 
+    protected static function getdistrict($state_id)
+    {
+        $result = DB::table('dist_mst')->select('id', 'name')->where(['state_id' => $state_id])->get();
+        return $result;
+    }
     protected static function getsubdivision($dist_id){
         if($dist_id=='' || $dist_id <0 || $dist_id>27 ){
             return false;
@@ -22,13 +27,13 @@ class District extends Model
     }
     protected static function pre_SubDivision($inputValue){
         if($inputValue['selectOption']== 'municipality'){
-            $result = DB::table('municipality_mst')->select('id', 'sub_div_id', 'name')->where(['sub_div_id' => $inputValue['id']])->get();
+            $result = DB::table('municipality_mst')->select('id', 'dist_id', 'name')->where(['dist_id' => $inputValue['id']])->get();
             return response()->json($result);
         }elseif ($inputValue['selectOption'] == 'block') {
-            $result = DB::table('block_mst')->select('id', 'sub_div_id', 'name')->where(['sub_div_id' => $inputValue['id']])->get();
+            $result = DB::table('block_mst')->select('id', 'dist_id', 'name')->where(['dist_id' => $inputValue['id']])->get();
             return response()->json($result);
         }elseif ($inputValue['selectOption'] == 'policeStation') {
-            $result = DB::table('p_station_mst')->select('id', 'sub_div_id', 'name')->where(['sub_div_id' => $inputValue['id']])->get();
+            $result = DB::table('p_station_mst')->select('id', 'dist_id', 'name')->where(['dist_id' => $inputValue['id']])->get();
             return response()->json($result);
         }else {
             return false;
@@ -46,6 +51,11 @@ class District extends Model
         }else {
             return false;
         }
+    }
+    protected static function getstate()
+    {
+        $result = DB::table('state_mst')->select('id', 'name')->get();
+        return $result;
     }
 
 }

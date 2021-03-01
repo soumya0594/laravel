@@ -18,7 +18,7 @@
                 <label for="district">District: <span class="star">*</span></label>
                 <select id="district" class="form-control">
                     <option value="" disabled selected>- SELECT FROM THE LIST -</option>
-                    <?php $__currentLoopData = $data['district']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dataValue): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $__currentLoopData = $district; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dataValue): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($dataValue->id); ?>"><?php echo e($dataValue->name); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </select>
@@ -63,7 +63,7 @@
                 <label> Caste/Tribe/Community: <span class="star">*</span></label>
                 <select id="subCaste" name="subCaste" class="form-control">
                     <option value="">- SELECT FROM THE LIST-</option>
-                    <?php $__currentLoopData = $data['caste']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $casteValue): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $__currentLoopData = $caste; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $casteValue): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <option value="<?php echo e($casteValue->id); ?>"><?php echo e($casteValue->c_name); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </select>
@@ -130,31 +130,37 @@
         <div class="col-md-3">
             <div class="form-group">
                 <label>(b) Place of Birth: <span class="star">* </span>  </label><label>State</label>
-                <select id="disabledSelect" class="form-control">
-                    <option>Disabled select</option>
+                <select id="birthState" name="birthState" class="form-control">
+                    <option value="">-- SELECT STATE FROM THE LIST--</option>
+                    <?php $__currentLoopData = $state; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $stateValue): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option <?php echo ($stateValue->id==8)?'selected':'';?> value="<?php echo e($stateValue->id); ?>"><?php echo e($stateValue->name); ?></option>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </select>
             </div>
         </div>
         <div class="col-md-2">
             <div class="form-group">
                 <label>District: </label>
-                <select id="disabledSelect" class="form-control">
-                    <option>Disabled select</option>
+                <select id="birthDistrict" name="birthDistrict" class="form-control">
+                    <option value="">- SELECT DISTRICT FROM THE LIST-</option>
+                     <?php $__currentLoopData = $district; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dataValue): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($dataValue->id); ?>"><?php echo e($dataValue->name); ?></option>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </select>
             </div>
         </div>
         <div class="col-md-2">
             <div class="form-group">
                 <label>Police Station: </label>
-                <select id="disabledSelect" class="form-control">
-                    <option>Disabled select</option>
+                <select id="birthPoliceStation" name="birthPoliceStation" class="form-control">
+                    <option value="">- SELECT POLICE STATION FROM THE LIST-</option>
                 </select>
             </div>
         </div>
         <div class="col-md-2">
             <div class="form-group">
                 <label>Village/City </label>
-                <select id="disabledSelect" class="form-control">
+                <select id="birthVillage" name="birthVillage" class="form-control">
                     <option>Disabled select</option>
                 </select>
             </div>
