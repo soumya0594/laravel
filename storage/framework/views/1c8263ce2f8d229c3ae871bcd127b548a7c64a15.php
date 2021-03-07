@@ -19,6 +19,7 @@
         <script src="<?php echo e(asset('/resources/js/main.js')); ?>"></script>
     </head>
     <body>
+        <input type="hidden" id="base_url" value="<?=URL::to('/')?>">
         <?php echo $__env->yieldContent('content'); ?>
     </body>
 </html>
