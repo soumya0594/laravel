@@ -1,5 +1,6 @@
+
 $(document).ready(function(){
-    var base_url = window.location.origin + '/laravel/';
+    var base_url = $('#base_url').val()+'/';
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -157,4 +158,3 @@ $(document).ready(function(){
         })
     });
 })
-

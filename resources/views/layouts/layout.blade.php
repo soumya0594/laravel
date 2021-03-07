@@ -19,6 +19,7 @@
         <script src="{{ asset('/resources/js/main.js') }}"></script>
     </head>
     <body>
+        <input type="hidden" id="base_url" value="<?=URL::to('/')?>">
         @yield('content')
     </body>
 </html>
