@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 
 class District extends Model
@@ -27,10 +27,10 @@ class District extends Model
     }
     protected static function pre_SubDivision($inputValue){
         if($inputValue['selectOption']== 'municipality'){
-            $result = DB::table('municipality_mst')->select('id', 'dist_id', 'name')->where(['dist_id' => $inputValue['id']])->get();
+            $result = DB::table('municipality_mst')->select('id', 'sub_div_id', 'name')->where(['sub_div_id' => $inputValue['id']])->get();
             return response()->json($result);
         }elseif ($inputValue['selectOption'] == 'block') {
-            $result = DB::table('block_mst')->select('id', 'dist_id', 'name')->where(['dist_id' => $inputValue['id']])->get();
+            $result = DB::table('block_mst')->select('id', 'sub_div_id', 'name')->where(['sub_div_id' => $inputValue['id']])->get();
             return response()->json($result);
         }elseif ($inputValue['selectOption'] == 'policeStation') {
             $result = DB::table('p_station_mst')->select('id', 'dist_id', 'name')->where(['dist_id' => $inputValue['id']])->get();

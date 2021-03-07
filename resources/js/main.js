@@ -45,8 +45,9 @@ $(document).ready(function(){
         })
     });
     $('body').on('change', '#subDivision', function () {
-        var id = $('#district').val();
+
         var selectOption = $("input[name='optradio']:checked").val();
+        var id = (selectOption==='policeStation') ? $('#district').val() : $(this).val() ;
         $('#disabledSelect').empty();
         $('#disabledSelect').append('<option value="" disabled selected>Processing....</option>');
         $.ajax({

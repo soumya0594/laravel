@@ -15,7 +15,7 @@ use Illuminate\Routing\Controller as BaseController;
 class DashboardController extends BaseController
 {
     public function index(){
-        // echo URL::to('/');exit;
+
         return view('dashboard.index');
     }
     public function applyform(){
